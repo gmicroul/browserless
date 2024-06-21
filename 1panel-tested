@@ -1,0 +1,14 @@
+export default async ({ page }: { page: Page }) => {
+  await page.goto("https://demo.1panel.cn/");
+  await page.waitForSelector("input");
+  await page.waitForSelector("button");
+  await page.click(`.el-input__inner[placeholder="用户名"]`);
+  await page.keyboard.type("demo");
+  await page.click(`.el-input__inner[placeholder="密码"]`);
+  await page.keyboard.type("1panel");
+  await page.evaluate(async () => {
+    document.querySelector(".el-checkbox__original").parentElement.click();
+    document.querySelector("button").click();
+    return;
+  });
+};
